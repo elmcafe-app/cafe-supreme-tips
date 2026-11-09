@@ -117,7 +117,7 @@ function fail(e){
   load("",false);const m=e.message||"";const nf=m.match(/find the function public\.(\w+)/);if(nf){toast("ناقص تحديث SQL: "+nf[1]);render({fresh:1,keep:1});return}
   if(/unauthorized/.test(m))return block("هذا اللينك غير صالح أو تم إيقافه.<br><span class='mu'>اطلب لينك جديد من المسؤول.</span>");
   const np=m.match(/no_points: (.*)/),nc=m.match(/no_cash: (.*)/),pm=/period_closed/.test(m)?"الفترة تم توزيعها وحُفظت نهائيًا ولا يمكن تعديلها":/no_days/.test(m)?"لا توجد أيام في هذه الفترة":/already/.test(m)?"الفترة معتمدة بالفعل":/not_end/.test(m)?"إنهاء المدة متاح في آخر يوم من الفترة بعد اعتماد اليوم":/locked/.test(m)?"الفترة محفوظة نهائيًا":"";if(pm){toast(pm);render({fresh:1,keep:1});return}
-  toast(nc?"الخزنة لا تكفي. المتاح: "+n2(Math.max(+nc[1],0)):np?"حدد نقاط: "+np[1]:/closed/.test(m)?"اليوم معتمد ومغلق":/forbidden/.test(m)?"ليس لديك صلاحية":/no_amount/.test(m)?"سجّل إجمالي التبس أولًا":/no_eligible/.test(m)?"لا يوجد موظف مستحق":/not_dist/.test(m)?"وزّع التبس أولًا":/self/.test(m)?"لا يمكن إيقاف إدارتك لنفسك":/function|schema|PGRST|column/.test(m)?"شغّل ملفات التحديث SQL أولًا":"خطأ: "+m.slice(0,80));
+  toast(nc?"الخزنة لا تكفي. المتاح: "+n2(Math.max(+nc[1],0)):np?"حدد نقاط: "+np[1]:/has_history/.test(m)?"لا يمكن حذف موظف له حضور أو سلف مسجّلة. استخدم «إيقاف» بدلًا من الحذف":/closed/.test(m)?"اليوم معتمد ومغلق":/forbidden/.test(m)?"ليس لديك صلاحية":/no_amount/.test(m)?"سجّل إجمالي التبس أولًا":/no_eligible/.test(m)?"لا يوجد موظف مستحق":/not_dist/.test(m)?"وزّع التبس أولًا":/self/.test(m)?"لا يمكن إيقاف إدارتك لنفسك":/function|schema|PGRST|column/.test(m)?"شغّل ملفات التحديث SQL أولًا":"خطأ: "+m.slice(0,80));
   render({fresh:1,keep:1});
 }
 let runq=Promise.resolve();
@@ -368,7 +368,7 @@ document.addEventListener("click",async e=>{
     if(k.wa)return share(k.wa);
     if(k.regen){if(await ask({title:"لينك جديد",text:"سيتوقف اللينك القديم فورًا.",ok:"متابعة"})){await api("tips_staff_regen",{p_id:k.regen});await render({fresh:1,keep:1});toast("تم إنشاء لينك جديد")}return}
     if(k.tog){const s=S.list.find(x=>x.id===k.tog);return run("tips_staff_set",ssd(s.id,{p_active:!s.active}))}
-    if(k.del){const s=S.list.find(x=>x.id===k.del);if(await ask({title:"حذف "+s.name,text:"سيتوقف لينكه فورًا.",ok:"حذف",danger:1})){S.sheet=null;drawSheet();await run("tips_staff_del",{p_id:s.id},"تم حذف الموظف")}return}
+    if(k.del){const s=S.list.find(x=>x.id===k.del);if(await ask({title:"حذف "+s.name,text:"سيتوقف لينكه فورًا. لو له حضور أو سلف سابقة لن يُحذف، استخدم «إيقاف» بدلًا منه.",ok:"حذف",danger:1})){S.sheet=null;drawSheet();await run("tips_staff_del",{p_id:s.id},"تم حذف الموظف")}return}
     if(id==="vadd"){const n=$("vn").value.trim(),v=+$("vc").value;if(!n||!(v>0&&v<=100))return toast("اكتب الاسم ونسبة من 1 إلى 100");S.cfg.vios.push({id:"v"+Date.now().toString(36),name:n,cut:v});return run("tips_cfg_set",{p_rates:S.cfg.rates,p_vios:S.cfg.vios})}
     if(k.vdel){S.cfg.vios=S.cfg.vios.filter(v=>v.id!==k.vdel);return run("tips_cfg_set",{p_rates:S.cfg.rates,p_vios:S.cfg.vios})}
   }catch(x){if(x.message==="badcut"){load("",false);return toast("اكتب نسبة الخصم")}fail(x)}
