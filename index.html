@@ -97,6 +97,68 @@ nav svg{stroke-width:1.7}
 .hb{-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%)}
 .bar{transition:transform .15s}.bar:active{transform:scale(.99)}
 .card h2{letter-spacing:-.1px}
+
+/* ===== v16: liquid glass · بطاقات أوضح وألوان أقوى ===== */
+:root{--e1:#0f7a64;--e2:#14917a;--e3:#0b5645;--ind:#4a5fc1;--amb:#d99a2b;--ros:#d9534f;
+--cok:linear-gradient(135deg,rgba(37,150,110,.20),rgba(37,150,110,.07));--cbd:linear-gradient(135deg,rgba(217,83,79,.19),rgba(217,83,79,.06));--cwn:linear-gradient(135deg,rgba(217,154,43,.22),rgba(217,154,43,.07));--cpr:linear-gradient(135deg,rgba(74,95,193,.16),rgba(74,95,193,.05));--h1:#1c7a63;--h2:#135c49;--h3:#0c3f33}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cok:linear-gradient(135deg,rgba(82,185,146,.24),rgba(82,185,146,.07));--cbd:linear-gradient(135deg,rgba(227,128,123,.24),rgba(227,128,123,.07));--cwn:linear-gradient(135deg,rgba(220,169,79,.25),rgba(220,169,79,.07));--cpr:linear-gradient(135deg,rgba(120,140,235,.22),rgba(120,140,235,.06));--h1:#1f8a70;--h2:#135f4d;--h3:#0a3b31}}
+:root[data-theme="dark"]{--cok:linear-gradient(135deg,rgba(82,185,146,.24),rgba(82,185,146,.07));--cbd:linear-gradient(135deg,rgba(227,128,123,.24),rgba(227,128,123,.07));--cwn:linear-gradient(135deg,rgba(220,169,79,.25),rgba(220,169,79,.07));--cpr:linear-gradient(135deg,rgba(120,140,235,.22),rgba(120,140,235,.06));--h1:#1f8a70;--h2:#135f4d;--h3:#0a3b31}
+body::before{background:radial-gradient(520px 360px at 12% -4%,rgba(20,145,122,.26),transparent 70%),radial-gradient(480px 400px at 100% 8%,rgba(74,95,193,.18),transparent 70%),radial-gradient(520px 420px at 0% 100%,rgba(217,154,43,.15),transparent 70%),radial-gradient(560px 420px at 100% 100%,rgba(20,145,122,.16),transparent 70%),var(--bg)}
+.card,.bar{position:relative;background:linear-gradient(150deg,var(--g1),var(--g2));border:1px solid var(--gb);box-shadow:var(--gs),inset 0 1px 0 var(--hl);-webkit-backdrop-filter:blur(20px) saturate(1.7);backdrop-filter:blur(20px) saturate(1.7)}
+.card::before,.bar::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,var(--spec),transparent 38%);opacity:.5;-webkit-mask:linear-gradient(#000,transparent 55%);mask:linear-gradient(#000,transparent 55%)}
+.card>*,.bar>*{position:relative}
+.card.t-ok,.bar.t-ok{background:var(--cok),linear-gradient(150deg,var(--g1),var(--g2));border-color:var(--okb)}
+.card.t-bd,.bar.t-bd{background:var(--cbd),linear-gradient(150deg,var(--g1),var(--g2));border-color:var(--bdb)}
+.card.t-wn,.bar.t-wn{background:var(--cwn),linear-gradient(150deg,var(--g1),var(--g2));border-color:var(--wnb)}
+.card.t-pr,.bar.t-pr{background:var(--cpr),linear-gradient(150deg,var(--g1),var(--g2));border-color:rgba(74,95,193,.3)}
+.acx{position:absolute;inset-block:14px;inset-inline-start:0;width:4px;border-radius:0 4px 4px 0;background:var(--ok)}.acx.r{background:var(--bd)}.acx.y{background:var(--wn)}.acx.n{background:var(--mu);opacity:.4}
+.hero{background:radial-gradient(120% 90% at 100% 0%,rgba(255,255,255,.2),transparent 56%),radial-gradient(80% 70% at 0% 100%,rgba(74,95,193,.35),transparent 70%),linear-gradient(155deg,var(--h1) 0%,var(--h2) 56%,var(--h3) 100%);border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 40px rgba(10,60,48,.32),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(0,0,0,.12);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;inset-inline-end:-70px;top:-90px;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 68%);pointer-events:none}
+.hs>div,.ms>div{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.16);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.ms>div:nth-child(1){box-shadow:inset 0 -3px 0 rgba(120,235,185,.75)}.ms>div:nth-child(2){box-shadow:inset 0 -3px 0 rgba(255,205,110,.8)}.ms>div:nth-child(3){box-shadow:inset 0 -3px 0 rgba(255,150,145,.8)}
+.hn{font-size:40px;font-weight:700;text-shadow:0 2px 14px rgba(0,0,0,.18)}
+/* كارت حسابي */
+.me{padding:18px;color:#fff;background:radial-gradient(110% 80% at 0% 0%,rgba(255,255,255,.24),transparent 56%),radial-gradient(70% 60% at 100% 100%,rgba(255,196,90,.30),transparent 70%),linear-gradient(145deg,#1b8f77 0%,#12705c 52%,#0c4d62 100%);border:1px solid rgba(255,255,255,.22);box-shadow:0 18px 38px rgba(12,77,98,.34),inset 0 1px 0 rgba(255,255,255,.34);cursor:pointer;margin-bottom:12px}
+.me::before{display:none}.me h2,.me b{color:#fff}.me .mu{color:rgba(255,255,255,.78)}
+.me .top{display:flex;align-items:center;gap:10px}.me .nm{flex:1;min-width:0;font-weight:600;font-size:16px}.me .nm small{display:block;font-weight:400;font-size:12px;opacity:.8}
+.me .go{font-size:12px;background:rgba(255,255,255,.2);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.me .big2{font-size:42px;font-weight:700;letter-spacing:-.6px;line-height:1.05;margin:12px 0 2px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.me .lab{font-size:13px;opacity:.88;display:flex;gap:8px;align-items:center}
+.me .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.me .tl>div{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:9px 10px;min-width:0;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.me .tl span{display:block;font-size:11px;opacity:.82}.me .tl b{display:block;font-size:clamp(13px,4vw,16px);margin-top:2px;white-space:nowrap}
+.me .tl>div:nth-child(1){box-shadow:inset 0 -3px 0 rgba(130,240,190,.85)}.me .tl>div:nth-child(2){box-shadow:inset 0 -3px 0 rgba(255,208,110,.9)}.me .tl>div:nth-child(3){box-shadow:inset 0 -3px 0 rgba(255,150,145,.9)}
+.me .pill.g,.me .pill.r,.me .pill.n{background:rgba(255,255,255,.93);border:0}.me .pill.g{color:#0d6b53}.me .pill.r{color:#b3322e}.me .pill.n{color:#4b5a54}.me .av{background:rgba(255,255,255,.22);color:#fff;border-color:transparent}
+.me .why{margin-top:12px;font-size:12.5px;line-height:1.7;opacity:.92;background:rgba(0,0,0,.14);border-radius:12px;padding:8px 11px}
+/* معادلة الرصيد */
+.eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1.15fr;align-items:stretch;gap:4px;margin:4px 0 12px;direction:rtl}
+.eq>div{border-radius:12px;padding:7px 4px;text-align:center;min-width:0;background:var(--in);border:1px solid var(--ln)}
+.eq>i{font-style:normal;align-self:center;color:var(--mu);font-weight:700;font-size:15px}
+.eq span{display:block;font-size:10px;color:var(--mu);white-space:nowrap}.eq b{display:block;font-size:clamp(11px,3.3vw,14px);white-space:nowrap}
+.eq .a{background:var(--oks);border-color:var(--okb)}.eq .b{background:var(--wns);border-color:var(--wnb)}.eq .c{background:var(--bds);border-color:var(--bdb)}.eq .z{background:var(--cpr);border-color:rgba(74,95,193,.3)}.eq .z.n{background:var(--cbd);border-color:var(--bdb)}.eq .z.p{background:var(--cok);border-color:var(--okb)}
+.exp{border-radius:var(--r2);padding:10px 12px;font-size:13px;line-height:1.75;background:var(--in);border:1px solid var(--ln);margin-top:10px}.exp b{font-weight:600}
+.exp.g{background:var(--oks);border-color:var(--okb)}.exp.r{background:var(--bds);border-color:var(--bdb)}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;white-space:nowrap}.pill.g{background:var(--oks);color:var(--ok);border:1px solid var(--okb)}.pill.r{background:var(--bds);color:var(--bd);border:1px solid var(--bdb)}.pill.n{background:var(--in);color:var(--mu);border:1px solid var(--ln)}
+.sc{overflow:hidden}.sc .acx{inset-block:0;border-radius:0}.bar .acx{inset-block:0;border-radius:0}.bar,.sc{overflow:hidden}
+.tile{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.tile>div{border-radius:14px;padding:9px 10px;min-width:0;border:1px solid var(--ln);background:var(--in)}.tile span{display:block;font-size:11.5px;color:var(--mu)}.tile b{display:block;font-size:clamp(13px,3.9vw,15px);white-space:nowrap;margin-top:1px}
+.tile .a{background:var(--oks);border-color:var(--okb)}.tile .b{background:var(--wns);border-color:var(--wnb)}.tile .c{background:var(--bds);border-color:var(--bdb)}.tile .p{background:var(--prs);border-color:var(--ln)}
+nav{-webkit-backdrop-filter:blur(26px) saturate(1.8);backdrop-filter:blur(26px) saturate(1.8)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.card,.bar{background:var(--cd)}}
+@media (prefers-reduced-motion:reduce){.card,.bar{-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+/* ===== v17: هوية ثابتة — أخضر Supreme + ذهبي، ألوان دلالية ثابتة، بدون تدرجات زخرفية ===== */
+:root{--brand:#0f5c4b;--brand2:#0c4a3c;--gold:#b98a2e;--bg:#f3f4f2;--tx:#101614;--mu:#5b6761;--pr:#0f5c4b;--prs:rgba(15,92,75,.09);--ok:#13795a;--oks:rgba(19,121,90,.10);--okb:rgba(19,121,90,.30);--bd:#c0392f;--bds:rgba(192,57,47,.09);--bdb:rgba(192,57,47,.30);--wn:#a8741a;--wns:rgba(184,128,32,.12);--wnb:rgba(184,128,32,.34);--h1:#0f5c4b;--h2:#0f5c4b;--h3:#0c4a3c;--cd:rgba(255,255,255,.86);--g1:rgba(255,255,255,.92);--g2:rgba(255,255,255,.80);--gb:rgba(16,22,20,.09);--ln:rgba(16,22,20,.09);--cok:var(--oks);--cbd:var(--bds);--cwn:var(--wns);--cpr:var(--prs)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--brand:#0f6b57;--brand2:#0c5444;--bg:#0c100f;--tx:#eaf0ed;--mu:#93a19a;--pr:#46b898;--prs:rgba(70,184,152,.13);--ok:#4cbd93;--oks:rgba(76,189,147,.13);--okb:rgba(76,189,147,.32);--bd:#e5736c;--bds:rgba(229,115,108,.13);--bdb:rgba(229,115,108,.32);--wn:#e0ae55;--wns:rgba(224,174,85,.13);--wnb:rgba(224,174,85,.32);--h1:#0f6b57;--h2:#0f6b57;--h3:#0c5444;--cd:rgba(255,255,255,.055);--g1:rgba(255,255,255,.075);--g2:rgba(255,255,255,.05);--gb:rgba(255,255,255,.11);--ln:rgba(255,255,255,.09)}}
+:root[data-theme="dark"]{--brand:#0f6b57;--brand2:#0c5444;--bg:#0c100f;--tx:#eaf0ed;--mu:#93a19a;--pr:#46b898;--prs:rgba(70,184,152,.13);--ok:#4cbd93;--oks:rgba(76,189,147,.13);--okb:rgba(76,189,147,.32);--bd:#e5736c;--bds:rgba(229,115,108,.13);--bdb:rgba(229,115,108,.32);--wn:#e0ae55;--wns:rgba(224,174,85,.13);--wnb:rgba(224,174,85,.32);--h1:#0f6b57;--h2:#0f6b57;--h3:#0c5444;--cd:rgba(255,255,255,.055);--g1:rgba(255,255,255,.075);--g2:rgba(255,255,255,.05);--gb:rgba(255,255,255,.11);--ln:rgba(255,255,255,.09)}
+body::before{background:linear-gradient(180deg,var(--prs),transparent 260px),var(--bg)}
+.card::before,.bar::before{display:none}
+.card,.bar{background:var(--g1);border:1px solid var(--gb);box-shadow:0 1px 2px rgba(16,22,20,.05),0 6px 18px rgba(16,22,20,.05);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
+.card.t-ok,.bar.t-ok{background:var(--oks);border-color:var(--okb)}.card.t-bd,.bar.t-bd{background:var(--bds);border-color:var(--bdb)}.card.t-wn,.bar.t-wn{background:var(--wns);border-color:var(--wnb)}.card.t-pr,.bar.t-pr{background:var(--prs);border-color:var(--ln)}
+.hero,.me{background:var(--brand);border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 26px rgba(15,92,75,.28),inset 0 1px 0 rgba(255,255,255,.18)}
+.me{background:var(--brand)}.hero::after{display:none}
+.hn,.me .big2{text-shadow:none}
+.hs>div,.ms>div,.me .tl>div{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:none;backdrop-filter:none}
+.me .why{background:rgba(0,0,0,.18)}
+.eq .z,.eq .z.n,.eq .z.p{background:var(--prs);border-color:var(--ln)}.eq .z.n{background:var(--bds);border-color:var(--bdb)}.eq .z.p{background:var(--oks);border-color:var(--okb)}
 </style>
 </head>
 <body>
@@ -174,9 +236,9 @@ const nul=p=>p.catch(()=>null);
 async function fetchData(){
   if(S.inDay)return{day:await api("tips_day_get",{p_day:S.date})};
   switch(S.tab){
-    case"home":{try{const hh=await api("tips_home",{p_day:TODAY(),p_month:CM()});if(hh&&typeof hh==="object"&&hh.dl)return{today:hh.today||null,dl:hh.dl,cash:hh.cash||null,acc:hh.acc||null,per0:hh.per0||null,rec:hh.rec||null}}catch(e){if(/unauthorized/.test(String(e&&e.message)))throw e}const [today,dl,cash,acc,per0]=await Promise.all([nul(api("tips_day_get",{p_day:TODAY()})),api("tips_days_list",{p_month:CM()}),nul(api("tips_cash",{p_month:CM()})),nul(api("tips_acc",{p_month:CM()})),nul(api("tips_period_get",{p_start:pst(TODAY())}))]);return{today,dl,cash,acc,per0,rec:null}}
+    case"home":{const mp0=nul(api("tips_me_period",{p_start:pst(TODAY())}));try{const hh=await api("tips_home",{p_day:TODAY(),p_month:CM()});if(hh&&typeof hh==="object"&&hh.dl)return{today:hh.today||null,dl:hh.dl,cash:hh.cash||null,acc:hh.acc||null,per0:hh.per0||null,rec:hh.rec||null,mp:await mp0}}catch(e){if(/unauthorized/.test(String(e&&e.message)))throw e}const [today,dl,cash,acc,per0]=await Promise.all([nul(api("tips_day_get",{p_day:TODAY()})),api("tips_days_list",{p_month:CM()}),nul(api("tips_cash",{p_month:CM()})),nul(api("tips_acc",{p_month:CM()})),nul(api("tips_period_get",{p_start:pst(TODAY())}))]);return{today,dl,cash,acc,per0,rec:null,mp:await mp0}}
     case"days":{const [dl,months]=await Promise.all([api("tips_days_list",{p_month:S.month}),nul(api("tips_months"))]);return{dl,months:months||[CM()]}}
-    case"staff":{const [list,today,acc]=await Promise.all([api("tips_staff_list",{p_month:CM()}),nul(api("tips_day_get",{p_day:TODAY()})),nul(api("tips_acc",{p_month:CM()}))]);return{list,today,acc}}
+    case"staff":{const [list,today,acc,mp]=await Promise.all([api("tips_staff_list",{p_month:CM()}),nul(api("tips_day_get",{p_day:TODAY()})),nul(api("tips_acc",{p_month:CM()})),nul(api("tips_me_period",{p_start:pst(TODAY())}))]);return{list,today,acc,mp}}
     case"acc":{if(!S.pstart||!S.pstart.startsWith(S.month))S.pstart=S.month===CM()?pst(TODAY()):S.month+"-01";const [acc,months,per]=await Promise.all([api("tips_acc",{p_month:S.month}),nul(api("tips_months")),nul(api("tips_period_get",{p_start:S.pstart}))]);const chk=per&&!per.closed?await nul(api("tips_period_check",{p_start:S.pstart})):null;return{acc,months:months||[CM()],per,chk}}
     case"set":return{log:await api("tips_log_list")};
     case"mine":{if(!S.mpstart||!S.mpstart.startsWith(S.month))S.mpstart=S.month===CM()?pst(TODAY()):S.month+"-01";const [mine,months,det,mp]=await Promise.all([api("tips_me",{p_month:S.month}),nul(api("tips_months")),nul(api("tips_staff_acc",{p_staff:S.me.id,p_month:S.month})),nul(api("tips_me_period",{p_start:S.mpstart}))]);return{mine,months:months||[CM()],det,mp}}
@@ -253,9 +315,20 @@ function attn(rows){const o=[],p=S.per0,r=S.rec;
  const s=o.join("");if(s)return s;
  return canAcc()&&r?`<div class="card" style="padding:11px 14px"><div class="row"><span class="lb"><i class="lp g"></i>كل شيء تمام · الخزنة مطابقة لأرصدة الموظفين</span></div></div>`:""}
 function periodCard(p){return `<div class="card"><div class="row"><h2 style="margin:0">الفترة الحالية · ${plabel(p.start)}</h2><span class="badge nw ${p.closed?"c":""}">${p.closed?"محفوظة":"مفتوحة"}</span></div><div class="mt"><div><span>تبس الفترة</span><b>${n2(p.pool)}</b></div><div><span>أيام مسجلة</span><b>${p.days}</b></div><div><span>أيام معتمدة</span><b>${p.days-p.open_days}</b></div></div>${canAcc()?`<button class="s w" data-gop="${p.start}" style="margin-top:12px">${ic("wallet")} تقرير الفترة</button>`:""}</div>`}
+
+function meCard(){
+  const P=S.mp;if(!P||!S.me)return"";
+  const net=+P.net,sh=+P.share,ad=+P.adv,pa=+P.pay,pv=+P.prev+ +P.open,has=Math.abs(net)+sh+ad+pa+Math.abs(pv)+ +P.pres+ +P.abs>0;if(!has)return"";
+  const pill=net<0?'<span class="pill r">عليك</span>':net>0?'<span class="pill g">لك</span>':'<span class="pill n">متعادل</span>';
+  const why=net<0?`السحب (${n2(ad+pa)}) أكبر من ${pv?"الرصيد السابق + ":""}نصيب الفترة (${n2(sh)})`:net>0?`${pv?"رصيد سابق "+n2(pv)+" + ":""}نصيب الفترة ${n2(sh)}${ad+pa?" − سلف وتسليم "+n2(ad+pa):""}`:"لا يوجد رصيد حاليًا";
+  return `<div class="card me" data-tab="mine" role="button"><div class="top">${av(S.me.name)}<div class="nm">حسابي<small>${esc(S.me.name)} · ${plabel(P.start)}</small></div><span class="go">التفاصيل ‹</span></div>
+  <div class="big2" data-cu="${net}" data-ck="me">${n2(net)}</div><div class="lab"><span>${P.closed?"رصيدك بعد الفترة":"رصيدك الحالي"}</span>${pill}</div>
+  <div class="tl"><div><span>${P.closed?"نصيب الفترة":"نصيب الفترة (تقديري)"}</span><b>${n2(sh)}</b></div><div><span>السلف</span><b>${n2(ad)}</b></div><div><span>المُسلَّم</span><b>${n2(pa)}</b></div></div>
+  <div class="why">${why}</div></div>`;
+}
 function vHome(){
   const rows=S.today?S.today.rows:[];
-  $("app").innerHTML=`${cashCard(S.cash)}${can("tips")?`<button class="w" data-open="${TODAY()}" style="margin-bottom:12px">${ic("coin")} تسجيل اليوم · ${dfmt(TODAY())}</button>`:""}${S.per0?periodCard(S.per0):""}${attn(rows)}${M()?"":`<button class="s w" data-tab="mine">${ic("user")} حسابي</button>`}`;
+  $("app").innerHTML=`${meCard()}${cashCard(S.cash)}${can("tips")?`<button class="w" data-open="${TODAY()}" style="margin-bottom:12px">${ic("coin")} تسجيل اليوم · ${dfmt(TODAY())}</button>`:""}${S.per0?periodCard(S.per0):""}${attn(rows)}${S.mp?"":`<button class="s w" data-tab="mine">${ic("user")} حسابي</button>`}`;
 }
 function vDays(){
   const td=TODAY();if(!S.dps||!S.dps.startsWith(S.month))S.dps=S.month===CM()?pst(td):S.month+"-01";
@@ -280,9 +353,9 @@ function vDay(){
 }
 function vStaff(){
   const tr={},ac={};(S.today?.rows||[]).forEach(r=>tr[r.id]=r);(S.acc||[]).forEach(r=>ac[r.id]=r);
-  $("app").innerHTML=`<div class="row" style="margin-bottom:12px"><button style="flex:1" data-sheet="new">${ic("plus")} إضافة موظف</button><button class="s" data-srch aria-label="بحث" style="padding:12px 15px">${ic("search")}</button></div>${srch()}`+S.list.filter(fq).map(s=>{
+  $("app").innerHTML=`${meCard()}<div class="row" style="margin-bottom:12px"><button style="flex:1" data-sheet="new">${ic("plus")} إضافة موظف</button><button class="s" data-srch aria-label="بحث" style="padding:12px 15px">${ic("search")}</button></div>${srch()}`+S.list.filter(fq).map(s=>{
     const r=tr[s.id],a=ac[s.id],net=a?bal(a):0,over=a&&net<0;
-    return `<div class="card sc" data-sheet="${a?"acc:"+s.id:s.id}"><div class="row"><div class="row" style="justify-content:flex-start;flex:1;min-width:0">${av(s.name)}<div style="min-width:0"><b>${esc(s.name)}</b>${s.id===S.me.id?' <span class="mu">(أنت)</span>':""}${s.active?"":' <span class="badge w nw">موقوف</span>'}${r&&r.rec!==false?`<div class="lbs">${stL(r.status)}${vL(r)}</div>`:""}</div></div><span class="badge nw ${+s.pts<=0?"r":"b"}">${+s.pts<=0?"بدون نقاط":s.pts+" نقطة"}</span></div>
+    return `<div class="card sc ${a?(over?"t-bd":net>0?"t-ok":""):""}" data-sheet="${a?"acc:"+s.id:s.id}"><i class="acx ${a?(over?"r":net>0?"":"n"):"n"}"></i><div class="row"><div class="row" style="justify-content:flex-start;flex:1;min-width:0">${av(s.name)}<div style="min-width:0"><b>${esc(s.name)}</b>${s.id===S.me.id?' <span class="mu">(أنت)</span>':""}${s.active?"":' <span class="badge w nw">موقوف</span>'}${r&&r.rec!==false?`<div class="lbs">${stL(r.status)}${vL(r)}</div>`:""}</div></div><span class="badge nw ${+s.pts<=0?"r":"b"}">${+s.pts<=0?"بدون نقاط":s.pts+" نقطة"}</span></div>
     ${a?`<div class="row" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--ln)"><span class="mu nw">حضور ${a.pres} · غياب ${a.abs}${+a.vio?" · مخالفات "+a.vio:""}</span><span class="nw"><span class="mu">الصافي</span> <b class="${over?"bad":""}" style="font-size:17px">${n2(net)}</b></span></div>`:""}</div>`}).join("");
 }
 function vAcc(){
@@ -290,7 +363,17 @@ function vAcc(){
   const seg=`<div class="seg" style="margin-bottom:12px">${["01","16"].map(x=>`<button data-ps="${S.month}-${x}" class="${S.pstart===S.month+"-"+x?"on":""}">${plabel(S.month+"-"+x)}</button>`).join("")}</div>`;
   const rep=p?`<div class="card"><div class="row"><h2 style="margin:0">الفترة · ${plabel(p.start)}</h2><span class="badge nw ${p.closed?"c":""}">${p.closed?"محفوظة نهائيًا":"مفتوحة"}</span></div><div class="mt"><div><span>تبس الفترة</span><b>${n2(p.pool)}</b></div><div><span>إجمالي النقاط</span><b>${n2(p.total_pts)}</b></div><div><span>قيمة النقطة</span><b>${n2(p.ppv)}</b></div></div><div class="mu" style="margin-top:8px">أيام معتمدة ${p.days-p.open_days} من ${p.days}${p.closed?" · أُغلقت بواسطة "+esc(p.closed_by||""):""}</div>
    ${canAcc()?`<div class="g2" style="margin-top:12px"><button class="s" data-stm>${ic("note",17)} كشوف الموظفين</button><button class="s" data-xls>${ic("wallet",17)} ملف Excel</button></div>`:""}${!p.closed&&(can("tips")||M())?(p.can_close?`<button class="w" data-pclose="${p.start}" style="margin-top:12px">${ic("lock")} إنهاء وحفظ المدة</button>`:`<div class="mu" style="margin-top:10px">إنهاء وحفظ المدة متاح يوم ${dfmt(p.end)} بعد اعتماد اليوم.</div>`):""}</div>`:'<div class="card mu" style="text-align:center">لا توجد بيانات لهذه الفترة</div>';
-  $("app").innerHTML=mchips()+seg+rep+chkCard(S.chk)+`<div class="row" style="margin:6px 6px 0"><h3 style="margin:14px 0 8px">حسابات الموظفين</h3><button class="s" data-srch aria-label="بحث" style="min-height:36px;padding:6px 12px">${ic("search")}</button></div>${srch()}`+a.filter(fq).map(r=>{const net=bal(r),over=net<0,x=pr[r.id];return `<button class="bar" data-sheet="acc:${r.id}"><div class="row">${av(r.name)}<div style="flex:1;min-width:0"><b>${esc(r.name)}</b>${x?`<div class="mu">نصيب الفترة ${n2(x.share)}</div>`:""}${over?'<div class="lbs"><span class="lb"><i class="lp r"></i>سحب أكثر من المستحق</span></div>':""}</div><div style="text-align:left;flex:none"><div class="md nw ${over?"bad":""}">${n2(net)}</div><div class="mu nw">الصافي</div></div></div></button>`}).join("");
+  $("app").innerHTML=mchips()+seg+rep+chkCard(S.chk)+`<div class="row" style="margin:6px 6px 0"><h3 style="margin:14px 0 8px">حسابات الموظفين</h3><button class="s" data-srch aria-label="بحث" style="min-height:36px;padding:6px 12px">${ic("search")}</button></div>${srch()}`+a.filter(fq).map(r=>{const net=bal(r),over=net<0,x=pr[r.id];return `<button class="bar ${over?"t-bd":net>0?"t-ok":""}" data-sheet="acc:${r.id}"><i class="acx ${over?"r":net>0?"":"n"}"></i><div class="row">${av(r.name)}<div style="flex:1;min-width:0"><b>${esc(r.name)}</b>${x?`<div class="mu">نصيب الفترة ${n2(x.share)}</div>`:""}${over?'<div class="lbs"><span class="lb"><i class="lp r"></i>سحب أكثر من المستحق</span></div>':""}</div><div style="text-align:left;flex:none"><div class="md nw ${over?"bad":""}">${n2(net)}</div><div class="mu nw">الصافي</div></div></div></button>`}).join("");
+}
+
+const sg=v=>(+v<0?"⁦−"+n2(Math.abs(v))+"⁩":n2(v));
+function eqH(P){const pv=+P.prev+ +P.open,net=+P.net;return `<div class="eq"><div class="${pv<0?"c":"z"}"><span>سابق</span><b>${sg(pv)}</b></div><i>+</i><div class="a"><span>نصيب</span><b>${n2(P.share)}</b></div><i>−</i><div class="b"><span>سلف</span><b>${n2(P.adv)}</b></div><i>−</i><div class="c"><span>مُسلَّم</span><b>${n2(P.pay)}</b></div><i>=</i><div class="z ${net<0?"n":net>0?"p":""}"><span>رصيدك</span><b>${sg(net)}</b></div></div>`}
+function expl(P,d){
+  const E=+P.earned,S_=+P.share,ppv=E>0?S_/E:0,A=+P.adv,Y=+P.pay,pv=+P.prev+ +P.open,net=+P.net,ent=P.entries||[],na=ent.filter(e=>e.kind==="adv").length,np=ent.filter(e=>e.kind==="pay").length;
+  let h=`<div class="exp g"><b>المستحق (نصيب الفترة) ${n2(S_)}</b><br>${E>0?`نقاطك المحتسبة <b>${n2(E)}</b> × قيمة النقطة <b>${n2(ppv)}</b> = ${n2(S_)}`:"لا توجد نقاط محتسبة لك في هذه الفترة بعد"}${P.closed?"":"<br>الرقم تقديري ويتغير كل ما يوم جديد يتسجل، ويتثبت عند حفظ الفترة."}${+P.abs?`<br>أيام الغياب (${P.abs}) محتسبة بصفر.`:""}</div>`;
+  if(A||Y)h+=`<div class="exp"><b>اللي اتخصم منك</b>${A?`<br>سلف ${n2(A)} (${na} ${na>1?"مرات":"مرة"})`:""}${Y?`<br>مُسلَّم لك ${n2(Y)} (${np} ${np>1?"مرات":"مرة"})`:""}</div>`;
+  h+=net<0?`<div class="exp r"><b>ليه رصيدك بالسالب؟</b><br>اللي اتسحب (${n2(A+Y)})${pv>0?" أكبر من الرصيد السابق + ":" أكبر من "}نصيب الفترة، والفرق <b>${n2(-net)}</b> بيتخصم من الفترة الجاية.</div>`:net>0?`<div class="exp g"><b>ليه رصيدك ${n2(net)}؟</b><br>${pv?"رصيد سابق "+sg(pv)+" + ":""}نصيب ${n2(S_)}${A||Y?" − سلف وتسليم "+n2(A+Y):""} = <b>${n2(net)}</b> مستحق لك عند الإدارة.</div>`:`<div class="exp"><b>رصيدك صفر</b> — كل مستحقاتك اتسلمت.</div>`;
+  return h;
 }
 function vMine(){
   const m=S.mine,d=S.det,P=S.mp,P0=P?String(P.start).slice(0,10):"",P1=P?String(P.end).slice(0,10):"",inP=ds=>!P||(ds>=P0&&ds<=P1),pres=P?+P.pres:+m.pres,abse=P?+P.abs:+m.abs,net=+m.prev+ +m.open+ +m.total-m.adv-m.paid,cur=S.month===CM(),td=TODAY();
@@ -299,7 +382,7 @@ function vMine(){
   const tbtn=M()?"":`<button data-themecycle aria-label="المظهر" style="position:absolute;top:14px;left:14px;width:36px;height:36px;min-height:0;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;box-shadow:none">${ic(S.theme==="dark"?"moon":S.theme==="light"?"sun":"mon")}</button>`;
   const inst=(matchMedia("(display-mode: standalone)").matches||navigator.standalone)?"":S.ip?`<button class="s w" data-install style="margin-bottom:12px">${ic("plus")} تثبيت التطبيق</button>`:`<div class="card mu">لتثبيت التطبيق: في آيفون اختر مشاركة ثم «إضافة إلى الشاشة الرئيسية». في أندرويد اختر القائمة ثم «تثبيت التطبيق».</div>`;
   const seg=`<div class="seg" style="margin-bottom:12px">${["01","16"].map(x=>`<button data-mps="${S.month}-${x}" class="${S.mpstart===S.month+"-"+x?"on":""}">${plabel(S.month+"-"+x)}</button>`).join("")}</div>`;
-  const pill=net<0?`<span class="hp r">عليك</span>`:net>0?`<span class="hp g">لك</span>`:`<span class="hp">متعادل</span>`;
+  const bn=P?+P.net:net,pill=bn<0?`<span class="hp r">عليك</span>`:bn>0?`<span class="hp g">لك</span>`:`<span class="hp">متعادل</span>`;
   // today
   const t=m.today,tdc=curP?(t?`<div class="card tdy"><div class="row"><div style="flex:1;white-space:nowrap"><div class="mu">اليوم · ${wd(td)}</div><div class="md" style="margin-top:2px">${stL(t.status)}</div></div><span class="badge nw ${t.closed?"c":""}" style="flex:none;${t.closed?"":"background:var(--wns);color:var(--wn)"}">${t.closed?"معتمد":"لم يُعتمد بعد"}</span></div></div>`:`<div class="card mu" style="text-align:center">لم يُفتح يوم اليوم بعد</div>`):"";
   // period progress
@@ -312,7 +395,7 @@ function vMine(){
    ${d?`<div class="cg">${cells}</div><div class="lbs" style="margin-top:12px"><span class="lb"><i class="lp g"></i>حضور ${pres}</span><span class="lb"><i class="lp r"></i>غياب ${abse}</span>${nL?`<span class="lb"><i class="lp y"></i>حالة خاصة ${nL}</span>`:""}${vL2.length?`<span class="lb"><i class="lp y"></i>مخالفات ${vL2.length}</span>`:""}</div>`:`<div class="row"><div><div class="md">${pres}</div><div class="lb mu"><i class="lp g"></i> حضور</div></div><div style="text-align:left"><div class="md">${abse}</div><div class="lb mu"><i class="lp r"></i> غياب</div></div></div>`}</div>`;
   // breakdown
   const row=(l,v,c)=>`<div class="kk"><span>${l}</span><b class="nw ${c||""}">${v}</b></div>`;
-  let brk;if(P){const pv=+P.prev+ +P.open;brk=`<div class="card"><h2>كيف حُسب رصيدك · ${plabel(P0)}</h2>${pv?row(+P.open&&!+P.prev?"رصيد افتتاحي":"رصيد سابق (قبل الفترة)",n2(pv),pv<0?"bad":""):""}${row("نصيب الفترة"+(P.closed?"":" (تقديري)"),n2(P.share))}${+P.adv?row("سلف الفترة (تُخصم)","\u2066−"+n2(P.adv)+"\u2069"):""}${+P.pay?row("تم تسليمه لك (يُخصم)","\u2066−"+n2(P.pay)+"\u2069"):""}<div class="kk tot"><span>${P.closed?"رصيدك بعد الفترة":"رصيدك حتى الآن"}</span><b class="nw ${+P.net<0?"bad":"ok"}">${n2(P.net)}</b></div>${d&&+d.pts?`<div class="mu" style="margin-top:8px">نقاطك: ${n2(d.pts)}</div>`:""}</div>`}
+  let brk;if(P){const pv=+P.prev+ +P.open;brk=`<div class="card"><h2>كيف حُسب رصيدك · ${plabel(P0)}</h2>${eqH(P)}${pv?row(+P.open&&!+P.prev?"رصيد افتتاحي":"رصيد سابق (قبل الفترة)",n2(pv),pv<0?"bad":""):""}${row("نصيب الفترة"+(P.closed?"":" (تقديري)"),n2(P.share))}${+P.adv?row("سلف الفترة (تُخصم)","\u2066−"+n2(P.adv)+"\u2069"):""}${+P.pay?row("تم تسليمه لك (يُخصم)","\u2066−"+n2(P.pay)+"\u2069"):""}<div class="kk tot"><span>${P.closed?"رصيدك بعد الفترة":"رصيدك حتى الآن"}</span><b class="nw ${+P.net<0?"bad":"ok"}">${n2(P.net)}</b></div>${d&&+d.pts?`<div class="mu" style="margin-top:8px">نقاطك: ${n2(d.pts)}</div>`:""}${expl(P,d)}</div>`}
   else{const pv=+m.prev+ +m.open;brk=`<div class="card"><h2>كيف حُسب رصيدك</h2>${pv?row("رصيد سابق",n2(pv),pv<0?"bad":""):""}${row("مستحق الشهر",n2(m.total))}${+m.adv?row("سلف (تُخصم)","\u2066−"+n2(m.adv)+"\u2069"):""}${+m.paid?row("تم تسليمه لك (يُخصم)","\u2066−"+n2(m.paid)+"\u2069"):""}<div class="kk tot"><span>رصيدك الحالي</span><b class="nw ${net<0?"bad":"ok"}">${n2(net)}</b></div>${d&&+d.pts?`<div class="mu" style="margin-top:8px">نقاطك هذا الشهر: ${n2(d.pts)}</div>`:""}</div>`}
   // violations
   const vio=vL2.length?`<div class="card"><h2>المخالفات والخصومات</h2>${vL2.map(x=>{const v=vinfo(x);return `<div class="kk"><span>${dm(String(x.day).slice(0,10))} · ${esc(v.name)}</span><b class="nw bad">\u2066−${v.cut}%\u2069</b></div>`}).join("")}<div class="mu" style="margin-top:8px">الخصم نسبة من نصيب ذلك اليوم فقط.</div></div>`:"";
@@ -322,7 +405,7 @@ function vMine(){
   const ent=P&&P.entries?P.entries:(d&&d.entries?d.entries:m.entries.map(e=>({kind:"adv",amt:e.amt,day:e.day}))),KL={adv:"سلفة",pay:"تسليم",open:"رصيد سابق"};
   const mov=`<div class="card"><h2>${P?"السلف والتسليمات في الفترة":"السلف والتسليمات"}</h2>${ent.map(e=>`<div class="kk"><span><b>${dm(String(e.day).slice(0,10))}</b> · ${KL[e.kind]||"حركة"}${e.note?`<div class="mu">${esc(e.note)}</div>`:""}</span><b class="nw ${e.kind==="open"?"":"bad"}">${e.kind==="open"?n2(e.amt):"\u2066−"+n2(e.amt)+"\u2069"}</b></div>`).join("")||'<div class="mu" style="text-align:center;padding:8px 0">لا توجد سلف أو تسليمات في هذه الفترة</div>'}</div>`;
   $("app").innerHTML=`<div class="hero" style="position:relative">${tbtn}<div class="row" style="justify-content:flex-start">${av(S.me.name)}<div style="flex:1;min-width:0"><b>${esc(S.me.name)}</b><div style="font-size:12px;opacity:.78">${wd(td)} · ${dfmt(td)}</div></div></div>
-  <div class="row" style="margin-top:16px;justify-content:flex-start;gap:10px"><span style="font-size:13px;opacity:.85">${cur?"رصيدك الحالي":"رصيدك في نهاية الشهر"}</span>${pill}</div><div class="hn" style="margin:4px 0 12px">${n2(net)}</div>
+  <div class="row" style="margin-top:16px;justify-content:flex-start;gap:10px"><span style="font-size:13px;opacity:.9">${curP||(!P&&cur)?"رصيدك الحالي":P?"رصيدك بعد هذه الفترة":"رصيدك في نهاية الشهر"}</span>${pill}</div><div class="hn" style="margin:4px 0 12px">${n2(bn)}</div>
   <div class="ms"><div><span>${P?"نصيب الفترة":"المستحق"}</span><b>${n2(P?P.share:m.total)}</b></div><div><span>${P?"سلف الفترة":"السلف"}</span><b>${n2(P?P.adv:m.adv)}</b></div><div><span>${P?"المُسلَّم في الفترة":"المُسلَّم"}</span><b>${n2(P?P.pay:m.paid)}</b></div></div></div>${mchips()}${seg}${tdc}${prog}${brk}${cal}${vio}${log}${mov}${inst}`;
 }
 const themeCard=()=>`<div class="card"><h2>المظهر</h2><div class="seg">${[["system","mon","تلقائي"],["light","sun","نهاري"],["dark","moon","ليلي"]].map(x=>`<button data-theme="${x[0]}" class="${S.theme===x[0]?"on":""}">${ic(x[1],17)} ${x[2]}</button>`).join("")}</div></div>`;
