@@ -245,6 +245,20 @@ nav .ind{background:var(--pr)!important}
 .mt>div:last-child,.tile>div:last-child{padding-inline-end:0}
 .mt span,.tile span{font-size:12px;color:var(--mu)}.mt b,.tile b{font-size:clamp(14px,4.2vw,17px)}
 .kk{padding:8px 0}.kk .lb>span>div{margin-top:1px;line-height:1.5;font-size:12.5px}.kk .lb{align-items:flex-start}
+
+#greet{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:radial-gradient(80% 60% at 50% 0%,rgba(199,169,107,.28),transparent 70%),linear-gradient(165deg,#2a3a42,#18222a);opacity:0;transition:opacity .4s;overflow:hidden;padding:24px}
+#greet.on{opacity:1}
+#greet .cf{position:absolute;inset:0;pointer-events:none}
+#greet .cf i{position:absolute;top:-24px;border-radius:2px;opacity:.9;animation:cfall linear infinite}
+@keyframes cfall{to{transform:translateY(110vh) rotate(540deg)}}
+#greet .gb{position:relative;text-align:center;color:#fff;max-width:340px}
+#greet .gb svg{filter:drop-shadow(0 6px 22px rgba(199,169,107,.45));animation:gpop .8s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes gpop{from{transform:scale(.3) rotate(-12deg);opacity:0}}
+#greet .g1{font-size:30px;font-weight:700;margin-top:18px;letter-spacing:-.3px;animation:gup .6s .25s both}
+#greet .g2t{font-size:16px;margin-top:14px;color:#c7a96b;font-weight:600;padding-top:14px;border-top:1px solid rgba(199,169,107,.35);animation:gup .6s .45s both}
+@keyframes gup{from{transform:translateY(14px);opacity:0}}
+#greet button{margin-top:30px;min-width:160px;background:#c7a96b;color:#1a1f22;animation:gup .6s .7s both}
+@media (prefers-reduced-motion:reduce){#greet .cf i{animation:none}}
 /* قائمة جانبية للشاشات الكبيرة */
 @media (min-width:1024px){
  nav{inset:0 0 0 auto;left:auto;right:0;bottom:auto;transform:none;width:210px;height:100vh;border-radius:0;border-width:0 0 0 1px;flex-direction:column;justify-content:flex-start;gap:6px;padding:96px 14px 20px;display:flex}
@@ -294,7 +308,7 @@ function fail(e){
   load("",false);const m=e.message||"";const nf=m.match(/find the function public\.(\w+)/);if(nf){toast("ناقص تحديث SQL: "+nf[1]);render({fresh:1,keep:1});return}
   if(/unauthorized/.test(m))return block("هذا اللينك غير صالح أو تم إيقافه.<br><span class='mu'>اطلب لينك جديد من المسؤول.</span>");
   const np=m.match(/no_points: (.*)/),nc=m.match(/no_cash: (.*)/),pm=/period_closed/.test(m)?"الفترة تم توزيعها وحُفظت نهائيًا ولا يمكن تعديلها":/no_days/.test(m)?"لا توجد أيام في هذه الفترة":/already/.test(m)?"الفترة معتمدة بالفعل":/not_end/.test(m)?"إنهاء المدة متاح في آخر يوم من الفترة بعد اعتماد اليوم":/locked/.test(m)?"الفترة محفوظة نهائيًا":"";if(pm){toast(pm);render({fresh:1,keep:1});return}
-  toast(nc?"الخزنة لا تكفي. المتاح: "+n2(Math.max(+nc[1],0)):np?"حدد نقاط: "+np[1]:/has_history/.test(m)?"لا يمكن حذف موظف له حضور أو سلف مسجّلة. استخدم «إيقاف» بدلًا من الحذف":/closed/.test(m)?"اليوم معتمد ومغلق":/forbidden/.test(m)?"ليس لديك صلاحية":/no_amount/.test(m)?"سجّل إجمالي التبس أولًا":/no_eligible/.test(m)?"لا يوجد موظف مستحق":/not_dist/.test(m)?"وزّع التبس أولًا":/self/.test(m)?"لا يمكن إيقاف إدارتك لنفسك":/function|schema|PGRST|column/.test(m)?"شغّل ملفات التحديث SQL أولًا":"خطأ: "+m.slice(0,80));
+  toast(nc?"الخزنة لا تكفي. المتاح: "+n2(Math.max(+nc[1],0)):np?"حدد نقاط: "+np[1]:/has_history/.test(m)?"لا يمكن حذف موظف له حضور أو سلف مسجّلة. استخدم «إيقاف» بدلًا من الحذف":/closed/.test(m)?"اليوم معتمد ومغلق":/owner_protected/.test(m)?"هذا الحساب محمي ولا يمكن تعديله":/forbidden/.test(m)?"ليس لديك صلاحية":/no_amount/.test(m)?"سجّل إجمالي التبس أولًا":/no_eligible/.test(m)?"لا يوجد موظف مستحق":/not_dist/.test(m)?"وزّع التبس أولًا":/self/.test(m)?"لا يمكن إيقاف إدارتك لنفسك":/function|schema|PGRST|column/.test(m)?"شغّل ملفات التحديث SQL أولًا":"خطأ: "+m.slice(0,80));
   render({fresh:1,keep:1});
 }
 let runq=Promise.resolve();
@@ -347,7 +361,7 @@ function paint(keep,anim){
   const a=$("app").firstElementChild;if(anim&&a)a.classList.add("view");drawSheet();if(keep)scrollTo(0,y);document.querySelectorAll("[data-cu]").forEach(cuAnim);
 }
 async function render(o={}){
-  if(!S.me)return;
+  if(!S.me)return;greet();
   const t=tabs();if(S.first){S.tab=t[0][0];S.first=false}if(S.tab!=="mine"&&!t.some(x=>x[0]===S.tab))S.tab=t[0][0];
   drawNav(t);
   $("bk").style.display=(S.inDay||S.tab==="mine"&&t.length>1)?"grid":"none";
@@ -473,6 +487,16 @@ function expl(P,d){
 
 IC.cup='<path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/>';
 const GI=["cup","wallet","cal","home","users","check"];
+
+function greet(){try{
+  if(!S.me||S.greeted)return;S.greeted=1;const n=S.me.name||"";if(!(n.includes("طارق")&&n.includes("بدوي")))return;
+  const k="tipsGreet_"+S.me.id;if(localStorage.getItem(k))return;localStorage.setItem(k,"1");
+  const cs=["#c7a96b","#f4efe3","#58c496","#ec7d74","#8fb4ff"],piece=Array.from({length:46},(_,i)=>`<i style="left:${(i*37)%100}%;background:${cs[i%5]};animation-delay:${(i%12)*.18}s;animation-duration:${3.2+(i%5)*.5}s;width:${6+(i%4)*3}px;height:${10+(i%3)*5}px;transform:rotate(${i*29}deg)"></i>`).join("");
+  const d=document.createElement("div");d.id="greet";d.setAttribute("role","dialog");d.setAttribute("aria-label","تهنئة");
+  d.innerHTML=`<div class="cf">${piece}</div><div class="gb"><svg width="96" height="96" viewBox="0 0 64 64" fill="none" stroke="#c7a96b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8h24v14a12 12 0 0 1-24 0z"/><path d="M20 12h-8c0 8 3 13 9 14"/><path d="M44 12h8c0 8-3 13-9 14"/><path d="M32 34v10"/><path d="M22 56h20"/><path d="M27 56v-6a5 5 0 0 1 10 0v6"/><path d="m32 14 2.2 4.4 4.8.7-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8-3.5-3.4 4.8-.7z" fill="#c7a96b" stroke="none"/></svg><div class="g1">مع تحيات كل خرا</div><div class="g2t">مع تحيات عمك محمد بدوي</div><button id="greetx">دخول</button></div>`;
+  document.body.appendChild(d);requestAnimationFrame(()=>d.classList.add("on"));
+  const x=()=>{d.classList.remove("on");setTimeout(()=>d.remove(),400)};d.querySelector("#greetx").onclick=x;
+}catch(e){}}
 function gameInit(){const a=[...GI,...GI];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}S.g={c:a,o:[],m:[],mv:0,lock:false}}
 function gameHTML(){const g=S.g;
   if(!g)return `<div class="card gm"><div class="row"><div><h2 style="margin:0">استراحة قهوة</h2><div class="mu">لعبة ذاكرة سريعة — لا تؤثر على حسابك</div></div><button class="s" data-gm="start" style="flex:none">ابدأ</button></div></div>`;
