@@ -234,10 +234,6 @@ nav .ind{background:var(--pr)!important}
 .logo,header{color:var(--tx)}
 .exp.g{background:var(--oks)}
 /* لعبة الذاكرة */
-.gg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.gc{aspect-ratio:1;min-height:0;padding:0;border-radius:14px;background:var(--in);border:1px solid var(--ln);color:var(--tx);transition:transform .2s,background .2s}
-.gc::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:.55}.gc.on::before{display:none}
-.gc.on{background:var(--cd);border-color:var(--gold);transform:rotateY(0)}.gc.ok{background:var(--oks);border-color:var(--okb);color:var(--ok)}
 
 .mt,.tile{gap:0;margin-top:14px;padding-top:12px;border-top:1px solid var(--ln)}
 .mt>div,.tile>div{background:none!important;border:0;border-radius:0;padding:0 10px;border-inline-start:1px solid var(--ln)}
@@ -259,6 +255,16 @@ nav .ind{background:var(--pr)!important}
 @keyframes gup{from{transform:translateY(14px);opacity:0}}
 #greet button{margin-top:30px;min-width:160px;background:#c7a96b;color:#1a1f22;animation:gup .6s .7s both}
 @media (prefers-reduced-motion:reduce){#greet .cf i{animation:none}}
+
+.gh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.gs{display:flex;gap:8px}.gs>div{background:var(--in);border:1px solid var(--ln);border-radius:12px;padding:5px 12px;text-align:center;min-width:64px}.gs span{display:block;font-size:10.5px;color:var(--mu)}.gs b{font-size:16px}
+.g48{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px;border-radius:18px;background:var(--in);border:1px solid var(--ln);touch-action:none;user-select:none;-webkit-user-select:none}
+.g48 .tl{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:clamp(18px,6vw,26px);background:var(--in2);color:var(--tx);border:1px solid var(--ln)}
+.g48 .t0{background:rgba(127,127,127,.10);border-color:transparent}
+.g48 .t2{background:#f1ece0;color:#3a3a32}.g48 .t4{background:#e8dfc8;color:#3a3a32}.g48 .t8{background:#dcc592;color:#2d2a20}.g48 .t16{background:#cfaa69;color:#241f12}.g48 .t32{background:#b98a45;color:#fff}.g48 .t64{background:#9a6b2d;color:#fff}.g48 .t128{background:#4c5d66;color:#fff;font-size:clamp(16px,5.2vw,22px)}.g48 .t256{background:#33444d;color:#f1d99a;font-size:clamp(16px,5.2vw,22px)}.g48 .t512{background:#26343c;color:#f1d99a;font-size:clamp(16px,5.2vw,22px)}.g48 .t1024{background:#1b262d;color:#e8c777;font-size:clamp(13px,4.2vw,19px)}.g48 .t2048{background:linear-gradient(135deg,#d4b06a,#a8864d);color:#1a1f22;font-size:clamp(13px,4.2vw,19px);box-shadow:0 0 18px rgba(199,169,107,.5)}
+.g48 .tl.pop{animation:tpop .22s ease-out}.g48 .tl.mrg{animation:tmrg .2s ease-out}
+@keyframes tpop{from{transform:scale(.4);opacity:0}}@keyframes tmrg{50%{transform:scale(1.12)}}
+.gov{position:absolute;inset:0;border-radius:18px;background:rgba(18,28,34,.78);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}.gov b{font-size:22px}.gov button{margin-top:6px;background:#c7a96b;color:#1a1f22;min-height:44px}
 /* قائمة جانبية للشاشات الكبيرة */
 @media (min-width:1024px){
  nav{inset:0 0 0 auto;left:auto;right:0;bottom:auto;transform:none;width:210px;height:100vh;border-radius:0;border-width:0 0 0 1px;flex-direction:column;justify-content:flex-start;gap:6px;padding:96px 14px 20px;display:flex}
@@ -485,8 +491,7 @@ function expl(P,d){
   return h;
 }
 
-IC.cup='<path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/>';
-const GI=["cup","wallet","cal","home","users","check"];
+
 
 function greet(){try{
   if(!S.me||S.greeted)return;S.greeted=1;const n=S.me.name||"";if(!(n.includes("طارق")&&n.includes("بدوي")))return;
@@ -497,21 +502,42 @@ function greet(){try{
   document.body.appendChild(d);requestAnimationFrame(()=>d.classList.add("on"));
   const x=()=>{d.classList.remove("on");setTimeout(()=>d.remove(),400)};d.querySelector("#greetx").onclick=x;
 }catch(e){}}
-function gameInit(){const a=[...GI,...GI];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}S.g={c:a,o:[],m:[],mv:0,lock:false}}
+const G48={
+  new(){const b=Array(16).fill(0);G48.add(b);G48.add(b);let best=0;try{best=+localStorage.getItem("tips48")||0}catch(e){}S.g={b,sc:0,best,prev:null,over:false,won:false,pop:[],mrg:[]}},
+  add(b){const e=[];b.forEach((v,i)=>{if(!v)e.push(i)});if(!e.length)return -1;const i=e[Math.random()*e.length|0];b[i]=Math.random()<.9?2:4;return i},
+  line(a){const o=a.filter(Boolean),r=[],m=[];let s=0;for(let i=0;i<o.length;i++){if(o[i]===o[i+1]){r.push(o[i]*2);m.push(r.length-1);s+=o[i]*2;i++}else r.push(o[i])}while(r.length<4)r.push(0);return{r,m,s}},
+  move(d){const g=S.g;if(!g||g.over)return false;
+    const b=g.b.slice(),nb=Array(16).fill(0);let sc=0,moved=false;const mg=[];
+    for(let k=0;k<4;k++){
+      const idx=[0,1,2,3].map(n=>d==="l"?k*4+n:d==="r"?k*4+3-n:d==="u"?n*4+k:(3-n)*4+k);
+      const L=G48.line(idx.map(x=>b[x]));sc+=L.s;idx.forEach((x,n)=>{nb[x]=L.r[n];if(L.r[n]!==b[x])moved=true});L.m.forEach(n=>mg.push(idx[n]))}
+    if(!moved)return false;
+    g.prev={b:g.b.slice(),sc:g.sc};g.b=nb;g.sc+=sc;const np=G48.add(g.b);g.pop=np>=0?[np]:[];g.mrg=mg;
+    if(g.sc>g.best){g.best=g.sc;try{localStorage.setItem("tips48",g.best)}catch(e){}}
+    if(!g.won&&g.b.includes(2048))g.won=true;
+    g.over=!G48.can(g.b);try{navigator.vibrate&&navigator.vibrate(8)}catch(e){}
+    return true},
+  can(b){if(b.includes(0))return true;for(let r=0;r<4;r++)for(let c=0;c<4;c++){const v=b[r*4+c];if((c<3&&b[r*4+c+1]===v)||(r<3&&b[(r+1)*4+c]===v))return true}return false}
+};
 function gameHTML(){const g=S.g;
-  if(!g)return `<div class="card gm"><div class="row"><div><h2 style="margin:0">استراحة قهوة</h2><div class="mu">لعبة ذاكرة سريعة — لا تؤثر على حسابك</div></div><button class="s" data-gm="start" style="flex:none">ابدأ</button></div></div>`;
-  const done=g.m.length===g.c.length;
-  return `<div class="card gm"><div class="row" style="margin-bottom:12px"><h2 style="margin:0">استراحة قهوة</h2><span class="mu nw">${g.mv} حركة</span></div><div class="gg">${g.c.map((n,i)=>{const mt=g.m.includes(i),sh=mt||g.o.includes(i);return `<button class="gc ${sh?"on":""} ${mt?"ok":""}" data-gm="${i}" aria-label="بطاقة ${i+1}">${sh?ic(n,26):""}</button>`}).join("")}</div>${done?`<div class="exp g" style="text-align:center">أحسنت — أنهيتها في ${g.mv} حركة</div>`:""}<div class="g2" style="margin-top:12px"><button class="s" data-gm="start">لعبة جديدة</button><button class="s" data-gm="close">إغلاق</button></div></div>`}
+  if(!g){let best=0;try{best=+localStorage.getItem("tips48")||0}catch(e){}
+    return `<div class="card gm"><div class="row"><div><h2 style="margin:0">استراحة قهوة · 2048</h2><div class="mu">اسحب لدمج الأرقام المتشابهة${best?` · أفضل نتيجة ${best}`:""}</div></div><button class="s" data-gm="start" style="flex:none">ابدأ</button></div></div>`}
+  return `<div class="card gm"><div class="gh"><div><h2 style="margin:0">2048</h2><div class="mu">اسحب في أي اتجاه</div></div><div class="gs"><div><span>النتيجة</span><b>${g.sc}</b></div><div><span>الأفضل</span><b>${g.best}</b></div></div></div>
+  <div class="g48" id="g48">${g.b.map((v,i)=>`<div class="tl t${v||0} ${g.pop.includes(i)?"pop":""} ${g.mrg.includes(i)?"mrg":""}">${v||""}</div>`).join("")}${g.over?`<div class="gov"><b>${g.won?"أحسنت!":"انتهت الحركات"}</b><span>نتيجتك ${g.sc}</span><button data-gm="start">العب مرة أخرى</button></div>`:""}</div>
+  ${g.won&&!g.over?`<div class="exp g" style="text-align:center">وصلت إلى 2048 — كمّل لو تحب</div>`:""}
+  <div class="g3" style="margin-top:12px"><button class="s" data-gm="start">جديدة</button><button class="s" data-gm="undo" ${g.prev?"":"disabled"}>تراجع</button><button class="s" data-gm="close">إغلاق</button></div></div>`}
 function gameDraw(){const e=$("game");if(e)e.innerHTML=gameHTML()}
 function gameClick(v){
-  if(v==="start"){gameInit();return gameDraw()}
+  if(v==="start"){G48.new();return gameDraw()}
   if(v==="close"){S.g=null;return gameDraw()}
-  const g=S.g;if(!g||g.lock)return;const i=+v;if(g.o.includes(i)||g.m.includes(i))return;
-  g.o.push(i);
-  if(g.o.length===2){g.mv++;const[a,b]=g.o;
-    if(g.c[a]===g.c[b]){g.m.push(a,b);g.o=[]}
-    else{g.lock=true;gameDraw();setTimeout(()=>{g.o=[];g.lock=false;gameDraw()},650);return}}
-  gameDraw()}
+  if(v==="undo"){const g=S.g;if(g&&g.prev){g.b=g.prev.b;g.sc=g.prev.sc;g.prev=null;g.over=false;g.pop=[];g.mrg=[];gameDraw()}return}
+  if(["l","r","u","d"].includes(v)&&G48.move(v))gameDraw()}
+(function(){let sx=0,sy=0,on=false;
+  document.addEventListener("touchstart",e=>{const b=e.target.closest&&e.target.closest("#g48");if(!b||!S.g){on=false;return}on=true;sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+  document.addEventListener("touchmove",e=>{if(on&&e.cancelable)e.preventDefault()},{passive:false});
+  document.addEventListener("touchend",e=>{if(!on)return;on=false;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))<24)return;gameClick(Math.abs(dx)>Math.abs(dy)?(dx>0?"r":"l"):(dy>0?"d":"u"))},{passive:true});
+  addEventListener("keydown",e=>{if(!S.g||S.g.over||!$("g48"))return;const m={ArrowLeft:"l",ArrowRight:"r",ArrowUp:"u",ArrowDown:"d"}[e.key];if(m){e.preventDefault();gameClick(m)}});
+})();
 function vMine(){
   const m=S.mine,d=S.det,P=S.mp,P0=P?String(P.start).slice(0,10):"",P1=P?String(P.end).slice(0,10):"",inP=ds=>!P||(ds>=P0&&ds<=P1),pres=P?+P.pres:+m.pres,abse=P?+P.abs:+m.abs,net=+m.prev+ +m.open+ +m.total-m.adv-m.paid,cur=S.month===CM(),td=TODAY();
   const days=(d&&d.days?d.days:[]).filter(x=>inP(String(x.day).slice(0,10))),dmap={};days.forEach(x=>dmap[String(x.day).slice(0,10)]=x);
